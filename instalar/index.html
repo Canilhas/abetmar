@@ -275,27 +275,27 @@ body.is-installed .hide-installed{display:none}
         <li>
           <span class="num">01</span>
           <div>
-            <h2>Toca Compartir</h2>
-            <p>Es el cuadrado con la flecha hacia arriba<span class="ico"><svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M5 14v5a1 1 0 001 1h12a1 1 0 001-1v-5"/></svg></span>, en la barra de abajo.</p>
+            <h2>Abre la app con el botón verde</h2>
+            <p>Al abrirla ya no verás esta pantalla, así que quédate con los dos pasos de abajo.</p>
           </div>
         </li>
         <li>
           <span class="num">02</span>
           <div>
-            <h2>Baja y elige «Añadir a pantalla de inicio»</h2>
-            <p>Está un poco abajo en la lista. Si no lo ves, sigue deslizando.</p>
+            <h2>Toca Compartir</h2>
+            <p>Es el cuadrado con la flecha hacia arriba<span class="ico"><svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M5 14v5a1 1 0 001 1h12a1 1 0 001-1v-5"/></svg></span>, en la barra de abajo.</p>
           </div>
         </li>
         <li>
           <span class="num">03</span>
           <div>
-            <h2>Toca «Añadir»</h2>
-            <p>Arriba a la derecha. El icono verde aparece con el resto de tus apps.</p>
+            <h2>Elige «Añadir a pantalla de inicio»</h2>
+            <p>Está un poco abajo en la lista. Confirma con «Añadir» arriba a la derecha.</p>
           </div>
         </li>
       </ol>
-      <p class="note">Esto solo funciona en Safari. Si estás en Chrome, copia la dirección y ábrela en Safari.</p>
-      <a class="ghost" href="../">Prefiero abrirla sin instalar</a>
+      <a class="cta" href="../">Abrir la app</a>
+      <p class="note">Solo funciona en Safari. Si estás en Chrome, copia la dirección y ábrela en Safari.</p>
     </div>
 
     <!-- Android -->
@@ -378,7 +378,6 @@ body.is-installed .hide-installed{display:none}
   else if (isIOS) body.classList.add('is-ios');
   else if (isAndroid) body.classList.add('is-android');
   else body.classList.add('is-desktop');
-
   ['url', 'url-inapp'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.textContent = here.replace(/^https?:\/\//, '');
