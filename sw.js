@@ -1,6 +1,6 @@
 /* Club Gimnasia Abetmar — service worker
    Sube la versión cada vez que cambies la app para forzar la actualización. */
-const VERSION = 'abetmar-v2';
+const VERSION = 'abetmar-v3';
 
 const PRECACHE = [
   './',
