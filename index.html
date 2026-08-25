@@ -36,8 +36,11 @@
   </noscript>
  <style>
 html,body{background:#162653}
-@supports(padding:env(safe-area-inset-bottom)){
-  body{padding-bottom:env(safe-area-inset-bottom)}
+@media (display-mode: standalone){
+  [class*="nav"], [class*="Nav"], nav, footer,
+  [style*="position:fixed"], [style*="position: fixed"]{
+    padding-bottom:env(safe-area-inset-bottom)!important;
+  }
 }
 </style>
 </head>
