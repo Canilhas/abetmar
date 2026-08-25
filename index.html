@@ -34,7 +34,12 @@
       This page requires JavaScript to display.
     </div>
   </noscript>
-  <style>html,body{background:#162653}</style>
+ <style>
+html,body{background:#162653}
+@supports(padding:env(safe-area-inset-bottom)){
+  body{padding-bottom:env(safe-area-inset-bottom)}
+}
+</style>
 </head>
 <body>
   <div id="__bundler_thumbnail">
