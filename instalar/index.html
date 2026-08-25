@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Instalar la app · Club Gimnasia Abetmar</title>
+<meta name="description" content="Añade la app del Club Gimnasia Abetmar a la pantalla de inicio de tu móvil. Sin tiendas, sin registros.">
+<meta name="theme-color" content="#162653">
+<link rel="icon" href="../icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..200,400..800&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#162653;
+  --navy-deep:#0b1531;
+  --navy-soft:#22376f;
+  --lime:#c1ff3d;
+  --paper:#eef2f9;
+  --muted:#8fa2c9;
+  --line:rgba(193,255,61,.18);
+  --chrome:linear-gradient(150deg,#ffffff 0%,#cfd9e8 32%,#7d8ca8 55%,#f2f6fb 78%,#9aa8c0 100%);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:
+    radial-gradient(120% 70% at 50% -10%, #24407e 0%, transparent 60%),
+    var(--navy-deep);
+  color:var(--paper);
+  font-family:"Inter Tight",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:0 20px calc(48px + env(safe-area-inset-bottom));
+}
+.wrap{max-width:520px;margin:0 auto}
+
+/* ---------- cabecera ---------- */
+.crest{padding:34px 0 6px;text-align:center}
+.crest img{width:min(260px,72%);height:auto;display:block;margin:0 auto;
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
+.eyebrow{
+  margin:16px 0 0;font-family:"Bricolage Grotesque",sans-serif;
+  font-variation-settings:"wdth" 200,"wght" 600;
+  font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--lime);
+}
+.eyebrow span{color:var(--muted)}
+
+h1{
+  font-family:"Bricolage Grotesque",sans-serif;
+  font-variation-settings:"wdth" 82,"wght" 800,"opsz" 96;
+  font-size:clamp(38px,12vw,58px);line-height:.94;letter-spacing:-.02em;
+  margin:26px 0 12px;text-wrap:balance;
+}
+h1 em{font-style:normal;color:var(--lime)}
+.lede{color:var(--muted);margin:0 0 30px;font-size:17px;max-width:34ch}
+
+/* ---------- maqueta de teléfono (elemento firma) ---------- */
+.stage{
+  position:relative;display:flex;justify-content:center;
+  padding:30px 0 34px;
+}
+.stage::before{
+  content:"";position:absolute;inset:8% 12%;border-radius:50%;
+  background:var(--lime);filter:blur(60px);opacity:.14;
+}
+.phone{
+  position:relative;width:216px;height:426px;border-radius:36px;
+  background:var(--navy);border:7px solid #2c3f74;
+  box-shadow:0 26px 60px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.06);
+  overflow:hidden;flex:none;
+}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column}
+.screen-top{
+  background:var(--lime);padding:20px 14px 16px;text-align:center;flex:none;
+}
+.screen-top img{width:52px;height:52px;border-radius:13px;display:block;margin:0 auto 8px;
+  box-shadow:0 3px 10px rgba(22,38,83,.28)}
+.screen-top b{
+  display:block;font-family:"Bricolage Grotesque",sans-serif;
+  font-variation-settings:"wdth" 90,"wght" 800;
+  color:var(--navy);font-size:15px;letter-spacing:-.01em;
+}
+.screen-body{flex:1;padding:14px 13px;display:flex;flex-direction:column;gap:9px}
+.row{height:11px;border-radius:6px;background:rgba(238,242,249,.13)}
+.row.short{width:58%}
+.row.tall{height:52px;border-radius:10px;background:rgba(193,255,61,.12)}
+
+/* barra del navegador dentro de la maqueta */
+.bar{
+  position:absolute;left:0;right:0;height:46px;flex:none;
+  background:rgba(11,21,49,.94);
+  display:flex;align-items:center;justify-content:space-around;
+  padding:0 10px;
+}
+.bar svg{width:17px;height:17px;stroke:#a9b8d6;fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.bar-ios{bottom:0;border-top:1px solid rgba(255,255,255,.1)}
+.bar-android{top:0;border-bottom:1px solid rgba(255,255,255,.1);justify-content:space-between}
+.urlpill{
+  flex:1;height:22px;border-radius:11px;background:rgba(238,242,249,.12);margin-right:10px;
+}
+.target{position:relative}
+.target svg{stroke:var(--navy);position:relative;z-index:2}
+.target::before{
+  content:"";position:absolute;inset:-9px;border-radius:50%;background:var(--lime);z-index:1;
+}
+.target::after{
+  content:"";position:absolute;inset:-9px;border-radius:50%;
+  border:2px solid var(--lime);animation:ping 1.9s ease-out infinite;
+}
+@keyframes ping{
+  0%{transform:scale(1);opacity:.85}
+  70%,100%{transform:scale(2.5);opacity:0}
+}
+.bar-ios,.bar-android{display:none}
+body.is-ios .bar-ios{display:flex}
+body.is-android .bar-android{display:flex}
+
+/* ---------- pasos ---------- */
+.steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.steps li{
+  display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:baseline;
+  padding:20px 2px;border-bottom:1px solid var(--line);
+}
+.num{
+  font-family:"Bricolage Grotesque",sans-serif;
+  font-variation-settings:"wdth" 200,"wght" 700;
+  color:var(--lime);font-size:15px;letter-spacing:.04em;
+}
+.steps h2{
+  font-family:"Bricolage Grotesque",sans-serif;
+  font-variation-settings:"wdth" 88,"wght" 700;
+  font-size:19px;margin:0 0 3px;letter-spacing:-.01em;
+}
+.steps p{margin:0;color:var(--muted);font-size:15px}
+.ico{
+  display:inline-flex;vertical-align:-4px;width:18px;height:18px;margin:0 2px;
+}
+.ico svg{width:100%;height:100%;stroke:var(--lime);fill:none;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- botones ---------- */
+.cta{
+  display:block;width:100%;margin:28px 0 0;padding:19px 22px;border:0;border-radius:16px;
+  background:var(--lime);color:var(--navy);cursor:pointer;text-align:center;text-decoration:none;
+  font-family:"Bricolage Grotesque",sans-serif;
+  font-variation-settings:"wdth" 92,"wght" 800;
+  font-size:18px;letter-spacing:-.01em;
+  transition:transform .12s ease,box-shadow .12s ease;
+  box-shadow:0 10px 26px rgba(193,255,61,.22);
+}
+.cta:active{transform:translateY(2px);box-shadow:0 4px 14px rgba(193,255,61,.18)}
+.ghost{
+  display:block;width:100%;margin:12px 0 0;padding:16px 22px;border-radius:16px;
+  border:1px solid rgba(238,242,249,.22);background:none;color:var(--paper);
+  font-family:inherit;font-size:15px;font-weight:500;text-align:center;text-decoration:none;cursor:pointer;
+}
+.note{color:var(--muted);font-size:14px;margin:22px 0 0;text-align:center}
+.note a{color:var(--lime)}
+
+.linkbox{
+  margin:24px 0 0;padding:16px 18px;border-radius:14px;
+  border:1px dashed var(--line);background:rgba(34,55,111,.35);
+}
+.linkbox span{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.linkbox code{
+  display:block;font-size:14px;color:var(--paper);word-break:break-all;
+  font-family:"Bricolage Grotesque",monospace;font-variation-settings:"wdth" 100,"wght" 500;
+}
+
+/* ---------- aviso navegador interno ---------- */
+.alert{
+  margin:0 0 26px;padding:20px;border-radius:16px;
+  background:var(--lime);color:var(--navy);
+}
+.alert h2{
+  font-family:"Bricolage Grotesque",sans-serif;
+  font-variation-settings:"wdth" 86,"wght" 800;
+  font-size:21px;margin:0 0 6px;letter-spacing:-.01em;
+}
+.alert p{margin:0;font-size:15px;opacity:.82}
+
+footer{
+  margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:13px;text-align:center;line-height:1.7;
+}
+footer b{color:var(--paper);font-weight:600}
+
+/* ---------- visibilidad por estado ---------- */
+.only-ios,.only-android,.only-desktop,.only-inapp,.only-installed{display:none}
+body.is-ios .only-ios,
+body.is-android .only-android,
+body.is-desktop .only-desktop,
+body.is-inapp .only-inapp,
+body.is-installed .only-installed{display:block}
+body.is-inapp .hide-inapp,
+body.is-installed .hide-installed{display:none}
+
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){
+  .target::after{animation:none;opacity:.5;transform:scale(1.6)}
+  .cta{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="crest">
+    <img src="wordmark.png" alt="Club Gimnasia Abetmar">
+    <p class="eyebrow">Gimnasia aeróbica <span>·</span> Burjassot, València</p>
+  </header>
+
+  <!-- Navegador interno (Instagram, Facebook, WhatsApp…) -->
+  <div class="alert only-inapp" role="alert">
+    <h2>Ábrelo en el navegador</h2>
+    <p>Has entrado desde otra aplicación y desde aquí no se puede instalar. Toca los tres puntos de arriba y elige «Abrir en el navegador».</p>
+  </div>
+
+  <!-- Ya instalada -->
+  <div class="only-installed">
+    <h1>Ya la tienes <em>puesta</em></h1>
+    <p class="lede">La app está en tu pantalla de inicio. Ábrela desde el icono verde cuando quieras.</p>
+    <a class="cta" href="../">Entrar en la app</a>
+  </div>
+
+  <main class="hide-installed">
+
+    <h1>Lleva el club <em>en el móvil</em></h1>
+    <p class="lede hide-inapp">Horarios, calendario de competiciones y avisos del club, en un icono de tu pantalla de inicio. No ocupa casi nada y no hace falta ninguna tienda de aplicaciones.</p>
+
+    <div class="stage hide-inapp">
+      <div class="phone">
+        <div class="screen">
+          <div class="screen-top">
+            <img src="../icons/icon-192.png" alt="">
+            <b>Abetmar</b>
+          </div>
+          <div class="screen-body">
+            <div class="row tall"></div>
+            <div class="row"></div>
+            <div class="row short"></div>
+            <div class="row"></div>
+            <div class="row short"></div>
+          </div>
+        </div>
+
+        <!-- barra de Safari (iPhone) -->
+        <div class="bar bar-ios">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+          <span class="target">
+            <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M5 14v5a1 1 0 001 1h12a1 1 0 001-1v-5"/></svg>
+          </span>
+          <svg viewBox="0 0 24 24"><path d="M4 5h7v15H4z"/><path d="M13 5h7v15h-7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M4 7h11v11H4z"/><path d="M9 4h11v11"/></svg>
+        </div>
+
+        <!-- barra de Chrome (Android) -->
+        <div class="bar bar-android">
+          <div class="urlpill"></div>
+          <span class="target">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.4" fill="currentColor" stroke="none"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- iPhone -->
+    <div class="only-ios hide-inapp">
+      <ol class="steps">
+        <li>
+          <span class="num">01</span>
+          <div>
+            <h2>Toca Compartir</h2>
+            <p>Es el cuadrado con la flecha hacia arriba<span class="ico"><svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M5 14v5a1 1 0 001 1h12a1 1 0 001-1v-5"/></svg></span>, en la barra de abajo.</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <div>
+            <h2>Baja y elige «Añadir a pantalla de inicio»</h2>
+            <p>Está un poco abajo en la lista. Si no lo ves, sigue deslizando.</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <div>
+            <h2>Toca «Añadir»</h2>
+            <p>Arriba a la derecha. El icono verde aparece con el resto de tus apps.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="note">Esto solo funciona en Safari. Si estás en Chrome, copia la dirección y ábrela en Safari.</p>
+      <a class="ghost" href="../">Prefiero abrirla sin instalar</a>
+    </div>
+
+    <!-- Android -->
+    <div class="only-android hide-inapp">
+      <button class="cta" id="install" type="button" hidden>Instalar la app</button>
+      <ol class="steps" id="android-steps">
+        <li>
+          <span class="num">01</span>
+          <div>
+            <h2>Abre el menú</h2>
+            <p>Los tres puntos<span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg></span> arriba a la derecha.</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <div>
+            <h2>Elige «Instalar aplicación»</h2>
+            <p>En algunos móviles aparece como «Añadir a pantalla de inicio».</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <div>
+            <h2>Confirma</h2>
+            <p>El icono verde queda con el resto de tus apps.</p>
+          </div>
+        </li>
+      </ol>
+      <a class="ghost" href="../">Prefiero abrirla sin instalar</a>
+    </div>
+
+    <!-- Ordenador -->
+    <div class="only-desktop hide-inapp">
+      <p class="lede">Estás en un ordenador. La app se instala desde el móvil: escanea el código QR del club o abre esta dirección en tu teléfono.</p>
+      <div class="linkbox">
+        <span>Dirección</span>
+        <code id="url">—</code>
+      </div>
+      <button class="cta" id="copy" type="button">Copiar enlace</button>
+      <a class="ghost" href="../">Abrir la app aquí</a>
+    </div>
+
+    <!-- Navegador interno: enlace copiable -->
+    <div class="only-inapp">
+      <div class="linkbox">
+        <span>Copia esta dirección</span>
+        <code id="url-inapp">—</code>
+      </div>
+      <button class="cta" id="copy-inapp" type="button">Copiar enlace</button>
+      <a class="ghost" href="../">Abrir la app igualmente</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <b>Club Gimnasia Abetmar</b><br>
+    Gimnasia aeróbica · Burjassot, València
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var body = document.body;
+  var ua = navigator.userAgent || '';
+  var here = new URL('./', location.href).href;
+
+  var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+  var isInApp = /FBAN|FBAV|Instagram|Line|WhatsApp|Twitter|TikTok|LinkedIn|Snapchat|GSA/.test(ua);
+  var isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                     navigator.standalone === true;
+
+  if (isStandalone) body.classList.add('is-installed');
+  else if (isInApp) body.classList.add('is-inapp');
+  else if (isIOS) body.classList.add('is-ios');
+  else if (isAndroid) body.classList.add('is-android');
+  else body.classList.add('is-desktop');
+
+  ['url', 'url-inapp'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = here.replace(/^https?:\/\//, '');
+  });
+
+  function wireCopy(btnId) {
+    var btn = document.getElementById(btnId);
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var done = function () {
+        var old = btn.textContent;
+        btn.textContent = 'Enlace copiado';
+        setTimeout(function () { btn.textContent = old; }, 2200);
+      };
+      if (navigator.clipboard) navigator.clipboard.writeText(here).then(done, function(){});
+      else done();
+    });
+  }
+  wireCopy('copy');
+  wireCopy('copy-inapp');
+
+  // Android: prompt de instalación nativo
+  var deferred = null;
+  var installBtn = document.getElementById('install');
+  var steps = document.getElementById('android-steps');
+
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferred = e;
+    if (installBtn) installBtn.hidden = false;
+    if (steps) steps.style.display = 'none';
+  });
+
+  if (installBtn) {
+    installBtn.addEventListener('click', function () {
+      if (!deferred) return;
+      deferred.prompt();
+      deferred.userChoice.then(function (choice) {
+        if (choice.outcome !== 'accepted' && steps) steps.style.display = '';
+        deferred = null;
+      });
+    });
+  }
+
+  window.addEventListener('appinstalled', function () {
+    body.className = 'is-installed';
+  });
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../sw.js').catch(function () {});
+  }
+})();
+</script>
+</body>
+</html>
