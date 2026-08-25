@@ -6,6 +6,7 @@
 <title>Instalar la app · Club Gimnasia Abetmar</title>
 <meta name="description" content="Añade la app del Club Gimnasia Abetmar a la pantalla de inicio de tu móvil. Sin tiendas, sin registros.">
 <meta name="theme-color" content="#162653">
+<link rel="manifest" href="../manifest.json">
 <link rel="icon" href="../icons/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -369,8 +370,11 @@ body.is-installed .hide-installed{display:none}
   var isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
                      navigator.standalone === true;
 
-  if (isStandalone) body.classList.add('is-installed');
-  else if (isInApp) body.classList.add('is-inapp');
+  if (isStandalone) {
+    location.replace('../');
+    return;
+  }
+  if (isInApp) body.classList.add('is-inapp');
   else if (isIOS) body.classList.add('is-ios');
   else if (isAndroid) body.classList.add('is-android');
   else body.classList.add('is-desktop');
